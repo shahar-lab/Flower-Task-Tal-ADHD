@@ -1,0 +1,22 @@
+subject, block_type, block, condition, trial, right_offer, left_offer, offer_right_image, offer_left_image, exp_value_right, exp_value_left, exp_value_chosen, choice_location, choice_key, choice_card, unchosen_card, chosen_card_image, unchosen_card_image, rt, randomwalk_counter, exp_value1, exp_value2, exp_value3, exp_value4, reward
+0, practice, 0, 1 second, 1, 3, 2, 3.png, 2.png, 0.65, 0.55, 0.65, right, 2, 3, 2, 3.png, 2.png, 1.6972138999999515, 0.35, 0.55, 0.65, 0.45,0,
+0, practice, 0, 1 second, 2, 4, 3, 4.png, 3.png, 0.45, 0.65, 0.45, right, 2, 4, 3, 4.png, 3.png, 43.20613609999998, 0.35, 0.55, 0.65, 0.45,1
+0, practice, 0, 1 second, 3, 2, 1, 2.png, 1.png, 0.55, 0.35, 0.55, right, 2, 2, 1, 2.png, 1.png, 0.6330968999999413, 0.35, 0.55, 0.65, 0.45,1
+0, practice, 0, 1 second, 4, 2, 4, 2.png, 4.png, 0.45, 0.55, 0.55, left, 1, 4, 2, 4.png, 2.png, 2.198152299999947, 0.35, 0.55, 0.65, 0.45,1
+0, practice, 0, 1 second, 5, 1, 2, 1.png, 2.png, 0.55, 0.35, 0.55, right, 2, 1, 2, 1.png, 2.png, 2.9371836000000258, 0.35, 0.55, 0.65, 0.45,0,
+0, test, 1, 7 seconds, 1, r, t, r.png, t.png, 0.65, 0.45, 0.45, left, 1, t, r, t.png, r.png, 1.358210700000086, 0.35, 0.45, 0.55, 0.65,1
+0, test, 1, 7 seconds, 2, s, t, s.png, t.png, 0.65, 0.55, 0.55, left, 1, t, s, t.png, s.png, 1.6202625000000808, 0.35, 0.45, 0.55, 0.65,1
+0, test, 2, 1 second, 1, 3, 4, 3.png, 4.png, 0.45, 0.65, 0.45, right, 2, 3, 4, 3.png, 4.png, 2.442401000000018, 0.55, 0.35, 0.65, 0.45,1
+0, test, 2, 1 second, 2, 4, 2, 4.png, 2.png, 0.45, 0.35, 0.45, right, 2, 4, 2, 4.png, 2.png, 0.8500781999999845, 0.55, 0.35, 0.65, 0.45,0,
+0, test, 3, 7 seconds, 1, 8, 7, 8.png, 7.png, 0.45, 0.55, 0.55, left, 1, 7, 8, 7.png, 8.png, 0.9150918000000274, 0.35, 0.65, 0.55, 0.45,0,
+0, test, 3, 7 seconds, 2, 8, 7, 8.png, 7.png, 0.45, 0.55, 0.45, right, 2, 8, 7, 8.png, 7.png, 0.8267828000000463, 0.35, 0.65, 0.55, 0.45,0,
+0, test, 4, 1 second, 1, g, f, g.png, f.png, 0.45, 0.65, 0.45, right, 2, g, f, g.png, f.png, 0.8004518000000189, 0.35, 0.65, 0.45, 0.55,0,
+0, test, 4, 1 second, 2, e, h, e.png, h.png, 0.55, 0.35, 0.55, right, 2, e, h, e.png, h.png, 0.913692200000014, 0.35, 0.65, 0.45, 0.55,0,
+0, test, 5, 7 seconds, 1, n, p, n.png, p.png, 0.35, 0.65, 0.65, left, 1, p, n, p.png, n.png, 0.5278959000000896, 0.55, 0.65, 0.45, 0.35,1
+0, test, 5, 7 seconds, 2, m, p, m.png, p.png, 0.35, 0.55, 0.55, left, 1, p, m, p.png, m.png, 1.035469199999966, 0.55, 0.65, 0.45, 0.35,0,
+0, test, 6, 1 second, 1, a, c, a.png, c.png, 0.35, 0.45, 0.45, left, 1, c, a, c.png, a.png, 0.7106447999999546, 0.45, 0.65, 0.35, 0.55,1
+0, test, 6, 1 second, 2, d, c, d.png, c.png, 0.55, 0.35, 0.35, left, 1, c, d, c.png, d.png, 0.031070900000031543, 0.45, 0.65, 0.35, 0.55,0,
+0, test, 7, 7 seconds, 1, u, w, u.png, w.png, 0.65, 0.35, 0.35, left, 1, w, u, w.png, u.png, 0.6291198000000122, 0.35, 0.45, 0.65, 0.55,0,
+0, test, 7, 7 seconds, 2, x, u, x.png, u.png, 0.55, 0.35, 0.55, right, 2, x, u, x.png, u.png, 0.6658089999999675, 0.35, 0.45, 0.65, 0.55,1
+0, test, 8, 1 second, 1, i, j, i.png, j.png, 0.55, 0.45, 0.55, right, 2, i, j, i.png, j.png, 1.7527332000000797, 0.45, 0.55, 0.65, 0.35,1
+0, test, 8, 1 second, 2, k, i, k.png, i.png, 0.65, 0.45, 0.45, left, 1, i, k, i.png, k.png, 4.674782300000061, 0.45, 0.55, 0.65, 0.35,0,
