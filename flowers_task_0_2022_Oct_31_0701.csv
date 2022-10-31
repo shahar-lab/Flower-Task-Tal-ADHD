@@ -1,4 +1,0 @@
-subject, block_type, block, thought probe, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, vas, RT_vas, coins_per_block, coins_per_task, ntrial_to_prob, count_to_prob
-0, practice, 0, 1 second, 1, practice_2, practice_4, practice_2.png, practice_4.png, 0.35, 0.65, 0.65, left, 1, practice_4, practice_2, practice_4.png, practice_2.png, 0.45, 0.65, 0.55, 0.35,1
-0, practice, 0, 1 second, 2, practice_2, practice_1, practice_2.png, practice_1.png, 0.65, 0.45, 0.45, left, 1, practice_1, practice_2, practice_1.png, practice_2.png, 0.45, 0.65, 0.55, 0.35,1
-0, practice, 0, 1 second, 3, practice_1, practice_3, practice_1.png, practice_3.png, 0.55, 0.45, 0.45, left, 1, practice_3, practice_1, practice_3.png, practice_1.png, 0.45, 0.65, 0.55, 0.35,1

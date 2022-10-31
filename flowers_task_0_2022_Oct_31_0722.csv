@@ -1,2 +1,0 @@
-subject, block_type, block, thought probe, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, vas, RT_vas, coins_per_block, coins_per_task, ntrial_to_prob, count_to_prob
-0, test, 0, 1, 1, 20, 19, 20.png, 19.png, 0.45, 0.55, 0.55, left, 1, 19, 20, 19.png, 20.png, 0.35, 0.65, 0.55, 0.45,0,
