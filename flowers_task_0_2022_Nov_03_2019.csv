@@ -1,0 +1,4 @@
+subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration
+0, test, 1, 0.5, 1, 4, 3, 4, 3, 0.65, 0.55, left, 1, 0.35, 0.45, 0.55, 0.65, 0.5586317999986932, 1, 1.000000,1.000000,1.000000,6.000000,0.500000,1.000000
+0, test, 1, 0.5, 2, 4, 2, 4, 2, 0.65, 0.45, left, 1, 0.35, 0.45, 0.55, 0.65, 0.41329419997055084, 0, 1.000000,1.000000,1.000000,6.000000,0.500000,1.000000
+0, test, 1, 0.5, 3

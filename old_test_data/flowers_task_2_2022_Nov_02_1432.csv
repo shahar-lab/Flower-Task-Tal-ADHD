@@ -1,0 +1,2 @@
+subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task
+2, practice, 1, 1, 1, 3, 2, 3, 2, 0.55, 0.45, left, 1, 0.35, 0.45, 0.55, 0.65, 4.352782399975695, 1, 1.000000,1.000000

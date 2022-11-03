@@ -8,15 +8,17 @@ from random import sample
 import random
 import pandas as pd
 
+################################################################################################################
 ####set experiment configuration --------------
 
 # number of trials and blocks
-Ntrials          = 3
-Nblocks          = 2
+Ntrials          = 25
+Nblocks          = 8
 
 #timing in the trial
 trial_timing =  {
-  "ITI": [1],
+  "ITI": [1], #fization at the start of the trial
+  "RT_deadline": [6],
   "choice_feedback": [0.5],
   "outcome": [1]
 }
@@ -26,14 +28,16 @@ trial_timing =  {
 arms_prob   =[0.35,0.45,0.55,0.65]
 
 #delay included in the experiment
-delay_array=[0.5,1]
+delay_array=[0.5,2]
 
 #change to True/False to include section in the next run
 instructionsPhase = False
 quizPhase         = False
 trainPhase        = False
 gamePhase         = True
-#------------------------------------------------------------------------------------------
+############################################################################################################
+
+
 
 
 
@@ -44,7 +48,7 @@ fileName = "flowers_task_" + expInfo["subject"] + "_" + data.getDateStr()
 dataFile = open(
     fileName + ".csv", "w"
 )  # a simple text file with 'comma-separated-values'
-dataFile.write("subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task\n")
+dataFile.write("subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration\n")
 subjectN = expInfo["subject"]
 
 
@@ -409,8 +413,8 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
 
        
     for t in range(1, trials+1):
-        mytimer = core.Clock()
-
+        mytimer    = core.Clock()
+        abort_trial= False
         #### STIMULI--------------
 
         #fixation
@@ -432,21 +436,28 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
 
         while True:
             abort(win)
+            
             #### RESPONSE TIMEOUT ----------------------------------------------------------------
-            if (mytimer.getTime() > 6):
+            if (mytimer.getTime() > trial_timing['RT_deadline'][0] ):
                 rt_warning = visual.TextStim(win, text= " רתוי רהמ ביגהל שי", pos=[0,0], color=(-1,-1,-1)) # יש להגיב מהר יותר
+                rt_warning2 = visual.TextStim(win, text= "ךשמהל אוהשלכ שקמ לע ץוחלל שי", pos=[0,-10], color=(-1,-1,-1)) # יש ללחוץ על מקש כלשהוא להמשך
                 rt_warning.draw()
+                rt_warning2.draw()
                 win.update()
+                abort_trial=True
                 while True:
+
                     events = pygame.event.poll()
                     if (events.type == pygame.JOYBUTTONDOWN):
                         # event 4 -> pressing down left button
-                        if (events.button == 4):
-                            RTwarning = True
+                        if events.button == 4:
                             break
-            events = pygame.event.poll()
+                break
+            
 
             ##### COLLECT RESPONSE ------------------------------------------------------------------
+            events = pygame.event.poll()
+
             if (events.type == pygame.JOYBUTTONDOWN):
                 
                 #sub pressed LEFT
@@ -483,64 +494,87 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
 
                     break
                 
-                #choice feedback screen (choice was drawen above)
-                fixation.draw()
-                win.update()
-                core.wait(trial_timing['choice_feedback'][0])
+        #choice feedback screen (choice was drawen above)
+        fixation.draw()
+        if abort_trial==False:
+            win.update()
+            core.wait(trial_timing['choice_feedback'][0])
 
 
         ##### DELAY  ------------------------------------------------------------------
-   
-        # present hourglass
-        hourglass.draw()
-        win.update()
-        core.wait(current_delay)
+
+
+        if abort_trial==False:
+            # present hourglass
+            hourglass.draw()
+            win.update()
+            core.wait(current_delay)
                                
     
         #### OUTCOME -------------------------------------
-        if (stimapr == "left"):
-            stimL.draw()
-        if (stimapr == "right"):
-            stimR.draw()
-        if (random.random() < prob_chosen):
-            won.draw()
-            coins_per_block+= 1
-            coins_per_task += 1
-            reward          = 1
-        else:
-            lost.draw()
-            reward = 0
-        win.update()
-        core.wait(trial_timing['outcome'][0])
+        if abort_trial==False:
+            if (stimapr == "left"):
+                stimL.draw()
+            if (stimapr == "right"):
+                stimR.draw()
+            if (random.random() < prob_chosen):
+                won.draw()
+                coins_per_block+= 1
+                coins_per_task += 1
+                reward          = 1
+            else:
+                lost.draw()
+                reward = 0
 
-#Save data --------------------------------------------------------------------------------------
-        
+        if abort_trial==False:
+            win.update()
+            core.wait(trial_timing['outcome'][0])
+
+        #Save data --------------------------------------------------------------------------------------
+        if abort_trial==False:
         #save a line with choice-outcome data
-        dataFile.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %f,%f\n" 
+            dataFile.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %f,%f,%f,%f,%f,%f\n" 
+                            % (
+                                subjectN,
+                                blockType,
+                                current_block+1,
+                                current_delay,
+                                t,
+                                chosen+1,  
+                                unchosen+1,
+                                offer[0]+1,
+                                offer[1]+1,
+                                prob_chosen,
+                                prob_unchosen,
+                                stimapr, 
+                                key,     
+                                arms_prob[0],
+                                arms_prob[1], 
+                                arms_prob[2], 
+                                arms_prob[3],
+                                RT,
+                                reward,
+                                coins_per_block,
+                                coins_per_task,
+                                trial_timing['ITI'][0],
+                                trial_timing['RT_deadline'][0],
+                                trial_timing['choice_feedback'][0],
+                                trial_timing['outcome'][0]
+                            )
+                        )
+                        
+
+        elif abort_trial==True:
+            dataFile.write("%s, %s, %s, %s, %s\n" 
                         % (
                             subjectN,
                             blockType,
                             current_block+1,
                             current_delay,
-                            t,
-                            chosen+1,  
-                            unchosen+1,
-                            offer[0]+1,
-                            offer[1]+1,
-                            prob_chosen,
-                            prob_unchosen,
-                            stimapr, 
-                            key,     
-                            arms_prob[0],
-                            arms_prob[1], 
-                            arms_prob[2], 
-                            arms_prob[3],
-                            RT,
-                            reward,
-                            coins_per_block,
-                            coins_per_task
+                            t
                         )
                     )
+
 
 main()
 
