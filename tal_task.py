@@ -28,12 +28,12 @@ trial_timing =  {
 arms_prob   =[0.35,0.45,0.55,0.65]
 
 #delay included in the experiment
-delay_array=[0.5,2]
+delay_array=[1,7]
 
 #change to True/False to include section in the next run
-instructionsPhase = False
-quizPhase         = False
-trainPhase        = False
+instructionsPhase = True
+quizPhase         = True
+trainPhase        = True
 gamePhase         = True
 ############################################################################################################
 
@@ -48,7 +48,7 @@ fileName = "flowers_task_" + expInfo["subject"] + "_" + data.getDateStr()
 dataFile = open(
     fileName + ".csv", "w"
 )  # a simple text file with 'comma-separated-values'
-dataFile.write("subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_right_image, offer_left_image, exp_value_right, exp_value_left, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration\n")
+dataFile.write("subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_left_image, offer_right_image, exp_value_chosen, exp_value_unchosen, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration\n")
 subjectN = expInfo["subject"]
 
 
