@@ -517,7 +517,8 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
                 stimL.draw()
             if (stimapr == "right"):
                 stimR.draw()
-            if (random.random() < prob_chosen):
+            rand_prob = random.randint(1,100)
+            if (rand_prob < prob_chosen*100):
                 won.draw()
                 coins_per_block+= 1
                 coins_per_task += 1
@@ -533,7 +534,7 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
         #Save data --------------------------------------------------------------------------------------
         if abort_trial==False:
         #save a line with choice-outcome data
-            dataFile.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %f,%f,%f,%f,%f,%f\n" 
+            dataFile.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %f,%f,%f,%f,%f,%f,%f\n" 
                             % (
                                 subjectN,
                                 blockType,
@@ -559,7 +560,8 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
                                 trial_timing['ITI'][0],
                                 trial_timing['RT_deadline'][0],
                                 trial_timing['choice_feedback'][0],
-                                trial_timing['outcome'][0]
+                                trial_timing['outcome'][0],
+                                rand_prob
                             )
                         )
                         
