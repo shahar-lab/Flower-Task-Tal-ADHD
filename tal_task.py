@@ -31,9 +31,9 @@ arms_prob   =[0.35,0.45,0.55,0.65]
 delay_array=[1,7]
 
 #change to True/False to include section in the next run
-instructionsPhase = True
-quizPhase         = True
-trainPhase        = True
+instructionsPhase = False
+quizPhase         = False
+trainPhase        = False
 gamePhase         = True
 ############################################################################################################
 
@@ -42,14 +42,19 @@ gamePhase         = True
 
 
 #### Make a text file to save data ---------------------------------------
-expInfo  = {"subject": "0"}
+expInfo  = {"Group (100 or 200)": "",
+            "Counterbalance (0 or 1)": "",
+            "ShaharID": ""}
 dlg      = gui.DlgFromDict(expInfo, title="Tal's Delay ADHD RL Task")
-fileName = "flowers_task_" + expInfo["subject"] + "_" + data.getDateStr()
+fileName = "flowers_task_" + expInfo["ShaharID"] + "_" + data.getDateStr()
 dataFile = open(
     fileName + ".csv", "w"
 )  # a simple text file with 'comma-separated-values'
-dataFile.write("subject, block_type, block, delay_condition, trial, chosen, unchosen, offer_left_image, offer_right_image, exp_value_chosen, exp_value_unchosen, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration\n")
-subjectN = expInfo["subject"]
+dataFile.write("ShaharID, group, counterbalance, block_type, block, delay_condition, trial, chosen, unchosen, offer_left_image, offer_right_image, exp_value_chosen, exp_value_unchosen, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration\n")
+
+subjectN           = expInfo["ShaharID"]
+counterbalance     = int(expInfo["Counterbalance (0 or 1)"]) # set whether 1sec or 7sec is the first delay
+group              = expInfo["Group (100 or 200)"] # set whether 1sec or 7sec is the first delay
 
 
 
@@ -80,8 +85,7 @@ coins_per_block = 0
 coordinates     =-9999
 
 
-#### set counterbalance and images ------------------------
-counterbalance     = (int(subjectN))%2 # set whether 1sec or 7sec is the first delay
+#### set images ------------------------
 
 training_image_set = [ "practice_1.png", "practice_2.png", "practice_3.png", "practice_4.png" ]
 
@@ -534,9 +538,11 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
         #Save data --------------------------------------------------------------------------------------
         if abort_trial==False:
         #save a line with choice-outcome data
-            dataFile.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %f,%f,%f,%f,%f,%f,%f\n" 
+            dataFile.write("%s,%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %f,%f,%f,%f,%f,%f\n" 
                             % (
                                 subjectN,
+                                group, 
+                                counterbalance,
                                 blockType,
                                 current_block+1,
                                 current_delay,
@@ -560,16 +566,18 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
                                 trial_timing['ITI'][0],
                                 trial_timing['RT_deadline'][0],
                                 trial_timing['choice_feedback'][0],
-                                trial_timing['outcome'][0],
-                                rand_prob
+                                trial_timing['outcome'][0]
+                                
                             )
                         )
                         
 
         elif abort_trial==True:
-            dataFile.write("%s, %s, %s, %s, %s\n" 
+            dataFile.write("%s,%s,%s, %s, %s, %s, %s\n" 
                         % (
                             subjectN,
+                            group, 
+                            counterbalance,
                             blockType,
                             current_block+1,
                             current_delay,
