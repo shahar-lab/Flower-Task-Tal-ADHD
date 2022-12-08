@@ -1,0 +1,4 @@
+ShaharID, group, counterbalance, block_type, block, delay_condition, trial, chosen, unchosen, offer_left_image, offer_right_image, exp_value_chosen, exp_value_unchosen, choice_location, choice_key, exp_value1, exp_value2, exp_value3, exp_value4, RT, reward, coins_per_block, coins_per_task,ITI_duration,rt_deadline,choice_feedback_duration,outcome_duration
+0,0,0, test, 1, 1, 1, 4, 1, 4, 1, 0.65, 0.35, left, 1, 0.35, 0.45, 0.55, 0.65, 0.2636939000803977, 1, 1.000000,1.000000,1.000000,6.000000,0.500000,1.000000
+0,0,0, test, 1, 1, 2, 3, 1, 3, 1, 0.55, 0.35, left, 1, 0.35, 0.45, 0.55, 0.65, 0.2135677000042051, 1, 2.000000,2.000000,1.000000,6.000000,0.500000,1.000000
+0,0,0, test, 1, 1, 3, 2, 4, 2, 4, 0.45, 0.65, left, 1, 0.35, 0.45, 0.55, 0.65, 0.0617911999579519, 0, 2.000000,2.000000,1.000000,6.000000,0.500000,1.000000

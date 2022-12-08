@@ -12,7 +12,7 @@ import pandas as pd
 ####set experiment configuration --------------
 
 # number of trials and blocks
-Ntrials          = 25
+Ntrials          = 3
 Nblocks          = 8
 
 #timing in the trial
@@ -76,7 +76,7 @@ mytimer = core.Clock()
 ####set stimuli--------------
 won        = visual.ImageStim(win, image="rw.png", pos=[0, 0], size=4)
 lost       = visual.ImageStim(win, image="ur.png", pos=[0, 0], size=4)
-fixation   = visual.TextStim(win, text="+", pos=[0, 0], color=(-1, -1, -1))
+fixation   = visual.TextStim(win, text="+", height=2, pos=[0, 0], color=(-1, -1, -1))
 hourglass  = visual.ImageStim(win, image="hourglass.png", pos=[0,0], size=4)
 
 #additional vars
@@ -427,9 +427,12 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
         core.wait(trial_timing['ITI'][0])
 
         #target
-        offer = sample(range(4),2)
-        stimL = visual.ImageStim(win, image=currSet[offer[0]], pos=[-6, 0], size=(6,6))
-        stimR = visual.ImageStim(win, image=currSet[offer[1]], pos=[6, 0], size=(6,6))
+        offer      = sample(range(4),2)
+        stimL      = visual.ImageStim(win, image=currSet[offer[0]], pos=[-7, 0], size=(7,7))
+        stimR      = visual.ImageStim(win, image=currSet[offer[1]], pos=[7, 0], size=(7,7))
+        left_rect  = visual.Rect(win, pos=[-7, 0], size = [7,7], lineColor=(0, 0, 0),  lineWidth = 2)
+        right_rect = visual.Rect(win, pos=[+7, 0], size = [7,7], lineColor=(0, 0, 0),lineWidth = 2)
+
         fixation.draw()
         stimL.draw()
         stimR.draw()
@@ -471,6 +474,8 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
 
                     #choice feedback screen
                     stimL.draw()
+                    left_rect.draw()
+
  
                     #save vars
                     prob_chosen     = arms_prob[offer[0]] # left flower prob 
@@ -487,7 +492,7 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
                     RT = str(mytimer.getTime())
 
                     stimR.draw()
-                    
+                    right_rect.draw()
                     #save vars
                     prob_chosen     = arms_prob[offer[1]] # right flower prob 
                     prob_unchosen   = arms_prob[offer[0]] # left flower prob
