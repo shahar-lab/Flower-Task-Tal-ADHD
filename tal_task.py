@@ -12,7 +12,7 @@ import pandas as pd
 ####set experiment configuration --------------
 
 # number of trials and blocks
-Ntrials          = 3
+Ntrials          = 25
 Nblocks          = 8
 
 #timing in the trial
@@ -31,9 +31,9 @@ arms_prob   =[0.35,0.45,0.55,0.65]
 delay_array=[1,7]
 
 #change to True/False to include section in the next run
-instructionsPhase = False
-quizPhase         = False
-trainPhase        = False
+instructionsPhase = True
+quizPhase         = True
+trainPhase        = True
 gamePhase         = True
 ############################################################################################################
 
@@ -473,8 +473,9 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
                     RT = str(mytimer.getTime())
 
                     #choice feedback screen
-                    stimL.draw()
                     left_rect.draw()
+                    stimL.draw()
+                    
 
  
                     #save vars
@@ -491,8 +492,9 @@ def mainExperimentModes(dataFile, current_block, subjectN, win, current_delay, t
 
                     RT = str(mytimer.getTime())
 
-                    stimR.draw()
                     right_rect.draw()
+                    stimR.draw()
+                    
                     #save vars
                     prob_chosen     = arms_prob[offer[1]] # right flower prob 
                     prob_unchosen   = arms_prob[offer[0]] # left flower prob
