@@ -12,7 +12,7 @@ import pandas as pd
 ####set experiment configuration --------------
 
 # number of trials and blocks
-Ntrials          = 3
+Ntrials          = 25
 Nblocks          = 8
 
 #timing in the trial
