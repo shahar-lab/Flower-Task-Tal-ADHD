@@ -31,9 +31,9 @@ arms_prob   =[0.35,0.45,0.55,0.65]
 delay_array=[1,7]
 
 #change to True/False to include section in the next run
-instructionsPhase = True
-quizPhase         = True
-trainPhase        = True
+instructionsPhase = False
+quizPhase         = False
+trainPhase        = False
 gamePhase         = True
 ############################################################################################################
 
